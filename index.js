@@ -67,7 +67,7 @@ app.missing(function($) {
   });
 });
 
-//app.error(function($, middleware) {
-// Log the error
-//console.trace('Something bad happened....!!', $.status, $.error.message);
-//});
+app.error(function($, middleware) {
+  //Log the error
+  console.trace('Error!!!!!!!!!!', $.status, $.error.message);
+});
