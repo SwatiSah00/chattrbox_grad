@@ -22,30 +22,31 @@ var static = require('diet-static')({
 });
 
 app.view('file', static);
-app.footer(function($) {
-  var pathname = $.url.pathname;
-  var mimeType = mime.lookup(pathname);
-  var extension = path.extname(pathname);
-  var source = app.path + pathname;
+app.footer(static);
+//app.footer(function($) {
+//var pathname = $.url.pathname;
+//var mimeType = mime.lookup(pathname);
+//var extension = path.extname(pathname);
+//var source = app.path + pathname;
 
-  if (extension) {
-    $.header('Content-Type', mimeType);
-    fs.readFile(source, function(error, data) {
-      if (!error) {
-        $.end(data);
-        $.return();
-      } else if (error.type != 'ENOENT') {
-        $.status(error.status || 500, 'File not found');
-        $.return();
-      } else {
-        throw error;
-        //$.return();
-      }
-    });
-  } else {
-    $.return();
-  }
-});
+//if (extension) {
+//$.header('Content-Type', mimeType);
+//fs.readFile(source, function(error, data) {
+//if (!error) {
+//$.end(data);
+//$.return();
+//} else if (error.type != 'ENOENT') {
+//$.status(error.status || 500, 'File not found');
+//$.return();
+//} else {
+//throw error;
+////$.return();
+//}
+//});
+//} else {
+//$.return();
+//}
+//});
 
 app.get('/', function($) {
   $.redirect('index.html');
